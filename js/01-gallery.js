@@ -7,6 +7,7 @@ const galleryListEl = document.querySelector(".gallery");
 galleryListEl.insertAdjacentHTML('beforeend', cardsContainer);
 galleryListEl.addEventListener('click', onGalleryListItemClick);
 
+
 function createGalleryCards(galleryItems) {
    return galleryItems.map(({ original, preview, description }) => {
         return `<li class="gallery__item">
@@ -26,5 +27,11 @@ function onGalleryListItemClick(event) {
     const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">
 `)
-instance.show()
+  instance.show();
+
+  galleryListEl.addEventListener('keydown', (event) => {
+  if (event.code === "Escape") {
+    instance.close();
+  }
+});
 }

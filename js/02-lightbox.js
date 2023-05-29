@@ -1,12 +1,13 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
-const galleryListEl = document.querySelector(".gallery");
+const galleryListEl = document.querySelector(".gallery")
+galleryListEl.insertAdjacentHTML('beforeend', createGalleryCards(galleryItems))
+galleryListEl.addEventListener('click', onGalleryListItemClick)
 
-galleryListEl.insertAdjacentHTML('beforeend', createGalleryCards(galleryItems));
-galleryListEl.addEventListener('click', onGalleryListItemClick);
+
 
 function createGalleryCards(galleryItems) {
    return galleryItems.map(({ original, preview, description }) => {
@@ -21,10 +22,5 @@ function createGalleryCards(galleryItems) {
 
 function onGalleryListItemClick(event) {
     event.preventDefault();
-    // console.log(event.target)
-    let gallery = new SimpleLightbox('.gallery a');
-    gallery.on('show.simplelightbox', function () {
-       
-    });
- let lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt',captionDelay:'250'});
 }
+ let lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt',captionDelay:'250'});

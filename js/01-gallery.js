@@ -1,10 +1,10 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
  
-const cardsContainer = createGalleryCards(galleryItems);
+
 const galleryListEl = document.querySelector(".gallery");
 
-galleryListEl.insertAdjacentHTML('beforeend', cardsContainer);
+galleryListEl.insertAdjacentHTML('beforeend', createGalleryCards(galleryItems));
 galleryListEl.addEventListener('click', onGalleryListItemClick);
 
 

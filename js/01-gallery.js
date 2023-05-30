@@ -23,15 +23,28 @@ function createGalleryCards(galleryItems) {
     }).join("");
 }
 function onGalleryListItemClick(event) {
-    event.preventDefault();
+  event.preventDefault();
+  if (!event.target.classList.contains('gallery__image')) {
+    return;
+  }
     const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">
 `)
   instance.show();
 
-  galleryListEl.addEventListener('keydown', (event) => {
+  window.addEventListener('keydown', onEscPress);
+  function onEscPress(event) {
   if (event.code === "Escape") {
-    instance.close();
+    instance.close(),
+      onModalClose()
   }
-});
-}
+  }
+
+  function onModalClose() {
+  window.removeEventListener('keydown', onEscPress);
+
+  }
+
+};
+
+
